@@ -34,7 +34,7 @@ return [
         'bacaan' => [
             [
                 'teks_arab' => 'اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنِ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّني مِنَ الْخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ',
-                'teks_latin' => 'Allāhumma bā\'id baynī...',
+                'teks_latin' => 'Allahumma baaid baynii wa bayna khotoyaaya kamaa baa’adta baynal masyriqi wal maghrib. Allahumma naqqinii min khotoyaaya kamaa yunaqqots tsaubul abyadhu minad danas. Allahummagh-silnii min khotoyaaya bil maa-iwats tsalji wal barod',
                 'terjemahan' => 'Ya Allah, jauhkanlah antara aku dan kesalahanku sebagaimana Engkau menjauhkan antara timur dan barat. Ya Allah, bersihkanlah aku dari kesalahan sebagaimana dibersihkannya kain putih dari kotoran. Ya Allah, cucilah kesalahan-kesalahanku dengan air, salju, dan air es.',
                 'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
             ]
