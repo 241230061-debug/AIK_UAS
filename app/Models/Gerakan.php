@@ -1,16 +1,17 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Gerakan extends Model
 {
+    // Mengarahkan model ke tabel tunggal 'gerakan' sesuai migration Anda
     protected $table = 'gerakan';
-    protected $fillable = ['id_kategori', 'nama', 'urutan', 'deskripsi', 'gambar_url', 'video_url'];
+    protected $guarded = [];
 
-    // Relasi ke Bacaan (Gunakan id_gerakan sebagai Foreign Key)
-    public function bacaan()
+    // Definisikan relasi ke model Bacaan
+    public function bacaans(): HasMany
     {
         return $this->hasMany(Bacaan::class, 'id_gerakan')->orderBy('urutan', 'asc');
     }

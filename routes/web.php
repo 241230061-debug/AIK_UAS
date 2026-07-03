@@ -11,3 +11,4 @@ Route::get('/', function () {
 // Route untuk menampilkan daftar gerakan berdasarkan mode (dewasa/anak)
 Route::get('/sholat/{mode}', [SholatController::class, 'index'])->name('sholat.index');
 Route::get('/panduan-sholat', [SholatController::class, 'index'])->name('sholat.index');
+Route::get('/sholat', [SholatController::class, 'index'])->name('sholat.index');
