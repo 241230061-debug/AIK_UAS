@@ -122,7 +122,7 @@
 
                     <div class="flex justify-between items-center gap-4 mt-8 pt-4 border-t border-gray-100">
                         @if(!$loop->first)
-                            <button type="button" onclick="scrollToCard({{ $loopIndex - 1 }})" class="nav-prev flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl active:scale-[0.98]">
+                            <button type="button" data-scroll-target="{{ $loopIndex - 1 }}" class="nav-prev flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl active:scale-[0.98]">
                                 ← Sebelumnya
                             </button>
                         @else
@@ -130,7 +130,7 @@
                         @endif
 
                         @if(!$loop->last)
-                            <button type="button" onclick="scrollToCard({{ $loopIndex + 1 }})" class="nav-next flex items-center gap-1.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition px-5 py-2.5 rounded-xl shadow-sm active:scale-[0.98]">
+                            <button type="button" data-scroll-target="{{ $loopIndex + 1 }}" class="nav-next flex items-center gap-1.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition px-5 py-2.5 rounded-xl shadow-sm active:scale-[0.98]">
                                 Selanjutnya →
                             </button>
                         @endif
@@ -224,6 +224,13 @@
                 targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
+
+        document.addEventListener('click', function(event) {
+            const button = event.target.closest('[data-scroll-target]');
+            if (!button) return;
+            const targetIndex = button.getAttribute('data-scroll-target');
+            scrollToCard(targetIndex);
+        });
 
         function toggleAudio(button) {
             const currentCard = button.closest('.gerakan-card');
