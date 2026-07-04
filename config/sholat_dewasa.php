@@ -5,7 +5,7 @@ return [
     [
         'urutan' => 1,
         'nama' => 'Berdiri Tegak Menghadap Kiblat (Qiyam)',
-        'foto' => 'images/dewasa/1-qiyam.jpg',
+        'foto' => 'images/dewasa/qiyam.png',
         'audio_url' => null,
         'deskripsi' => 'Berdiri tegak menghadap kiblat dengan posisi badan lurus serta thuma\'ninah, disertai niat ikhlas karena Allah di dalam hati.',
         'bacaan' => []
@@ -13,7 +13,7 @@ return [
     [
         'urutan' => 2,
         'nama' => 'Takbiratul Ihram',
-        'foto' => 'images/dewasa/2-takbir.jpg',
+        'foto' => 'images/dewasa/takbir.png',
         'audio_url' => 'audio/gerakan-2.mp3',
         'deskripsi' => 'Mengangkat kedua tangan sejajar telinga atau bahu dengan menghadapkan telapak tangan ke kiblat seraya mengucapkan kalimat takbir.',
         'bacaan' => [
@@ -28,7 +28,7 @@ return [
     [
         'urutan' => 3,
         'nama' => 'Bersedekap & Doa Iftitah',
-        'foto' => 'images/dewasa/3-sedekap.jpg',
+        'foto' => 'images/dewasa/setelah_takbir.png',
         'audio_url' => 'audio/gerakan-3.mp3',
         'deskripsi' => 'Meletakkan tangan kanan di atas pergelangan tangan kiri di atas dada, lalu dilanjutkan dengan membaca doa Iftitah.',
         'bacaan' => [
@@ -43,7 +43,7 @@ return [
     [
         'urutan' => 4,
         'nama' => 'Membaca Surah Al-Fātihah & Al-Qur\'an',
-        'foto' => 'images/dewasa/4-alfatihah.jpg',
+        'foto' => 'images/dewasa/setelah_takbir.png',
         'audio_url' => 'audio/gerakan-4.mp3',
         'deskripsi' => 'Berdiri tegak membaca Surah Al-Fātihah secara lengkap (wajib), lalu diikuti dengan membaca beberapa ayat atau surah pendek dari Al-Qur\'an.',
         'bacaan' => [
@@ -58,7 +58,7 @@ return [
     [
         'urutan' => 5,
         'nama' => 'Rukuk',
-        'foto' => 'images/dewasa/5-rukuk.jpg',
+        'foto' => 'images/dewasa/ruku.png',
         'audio_url' => 'audio/gerakan-5.mp3',
         'deskripsi' => 'Membungkukkan badan dengan posisi punggung dan kepala rata sejajar, kedua tangan memegang lutut dengan jari direnggangkan secara thuma\'ninah.',
         'bacaan' => [
@@ -73,7 +73,7 @@ return [
     [
         'urutan' => 6,
         'nama' => 'I\'tidal',
-        'foto' => 'images/dewasa/6-itidal.jpg',
+        'foto' => 'images/dewasa/takbir.png',
         'audio_url' => 'audio/gerakan-6.mp3',
         'deskripsi' => 'Bangkit dari rukuk menuju posisi berdiri tegak kembali (thuma\'ninah) sembari mengangkat kedua tangan dan membaca doa i\'tidal.',
         'bacaan' => [
@@ -88,7 +88,7 @@ return [
     [
         'urutan' => 7,
         'nama' => 'Sujud Pertama',
-        'foto' => 'images/dewasa/7-sujud.jpg',
+        'foto' => 'images/dewasa/sujud.png',
         'audio_url' => 'audio/gerakan-7.mp3',
         'deskripsi' => 'Meletakkan dahi, hidung, kedua telapak tangan, kedua lutut, dan ujung jari-jari kedua kaki menempel pada lantai secara thuma\'ninah.',
         'bacaan' => [
@@ -103,7 +103,7 @@ return [
     [
         'urutan' => 8,
         'nama' => 'Duduk di Antara Dua Sujud',
-        'foto' => 'images/dewasa/8-duduk.jpg',
+        'foto' => 'images/dewasa/duduk_diantara.png',
         'audio_url' => 'audio/gerakan-8.mp3',
         'deskripsi' => 'Bangkit dari sujud pertama lalu duduk tegak dengan posisi iftirasy (menduduki kaki kiri dan menegakkan telapak kaki kanan) disertai thuma\'ninah.',
         'bacaan' => [
@@ -118,7 +118,7 @@ return [
     [
         'urutan' => 9,
         'nama' => 'Sujud Kedua',
-        'foto' => 'images/dewasa/9-sujud2.jpg',
+        'foto' => 'images/dewasa/9-sujud2.png',
         'audio_url' => 'audio/gerakan-9.mp3',
         'deskripsi' => 'Turun kembali untuk melakukan sujud kedua secara thuma\'ninah dengan cara dan doa yang sama seperti pada sujud pertama.',
         'bacaan' => [
@@ -133,7 +133,7 @@ return [
     [
         'urutan' => 10,
         'nama' => 'Berdiri ke Rakaat Berikutnya',
-        'foto' => 'images/dewasa/10-berdiri.jpg',
+        'foto' => 'images/dewasa/10-berdiri.png',
         'audio_url' => null,
         'deskripsi' => 'Bangkit dari sujud kedua untuk kembali berdiri tegak (qiyam) guna melanjutkan rakaat sholat berikutnya.',
         'bacaan' => []
