@@ -76,9 +76,19 @@
                         <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
                     </div>
 
-                    <div class="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner">
-                        <img id="img-dewasa-{{ $loopIndex }}" src="{{ asset($gerakan->foto_dewasa) }}" alt="Visualisasi Dewasa {{ $gerakan->nama }}" class="w-full h-full object-cover">
-                        <img id="img-anak-{{ $loopIndex }}" src="{{ asset($gerakan->foto_anak) }}" alt="Ilustrasi Anak {{ $gerakan->nama }}" class="w-full h-full object-cover hidden">
+                    <div class="w-full h-72 sm:h-96 md:h-[450px] bg-gray-100 rounded-xl border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner p-2 bg-slate-50">
+    
+                        <img id="img-dewasa-{{ $loopIndex }}" 
+                            src="{{ $gerakan->foto_dewasa ? asset($gerakan->foto_dewasa) : asset('images/dewasa/takbir.png') }}" 
+                            alt="Visualisasi Dewasa {{ $gerakan->nama }}" 
+                            class="max-h-full max-w-full object-contain rounded-lg transition-all duration-300">
+
+    
+                        <img id="img-anak-{{ $loopIndex }}" 
+                            src="{{ $gerakan->foto_anak ? asset($gerakan->foto_anak) : '#' }}" 
+                            alt="Ilustrasi Anak {{ $gerakan->nama }}" 
+                            class="max-h-full max-w-full object-contain hidden rounded-lg transition-all duration-300">
+
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
