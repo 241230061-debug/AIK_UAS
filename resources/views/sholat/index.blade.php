@@ -12,7 +12,8 @@
         return (object)[
             'urutan' => $item['urutan'] ?? ($index + 1),
             'nama' => $item['nama'] ?? '',
-            'audio_url' => $item['audio_url'] ?? null,
+            'audio_url_dewasa' => $item['audio_url'] ?? null,
+            'audio_url_anak' => $itemAnak['audio_url'] ?? null,
             'foto_dewasa' => $item['foto'] ?? '',
             'foto_anak' => $itemAnak['foto'] ?? '',
             'deskripsi_dewasa' => $item['deskripsi'] ?? '',
@@ -27,7 +28,7 @@
                 ];
             })
         ];
-    }); // <-- Perhatikan di sini: harus ada '}' sebelum '])' untuk menutup fungsi map utama!
+    });
 @endphp
 
 <!DOCTYPE html>
@@ -83,7 +84,6 @@
                             alt="Visualisasi Dewasa {{ $gerakan->nama }}" 
                             class="max-h-full max-w-full object-contain rounded-lg transition-all duration-300">
 
-    
                         <img id="img-anak-{{ $loopIndex }}" 
                             src="{{ $gerakan->foto_anak ? asset($gerakan->foto_anak) : '#' }}" 
                             alt="Ilustrasi Anak {{ $gerakan->nama }}" 
@@ -91,10 +91,15 @@
 
                     </div>
 
-                    <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
+                    <!-- Menyimpan kedua URL audio di dalam data-attribute -->
+                    <audio id="audio-element-{{ $loopIndex }}" class="gerakan-audio" 
+                           src="{{ $gerakan->audio_url_dewasa ? asset($gerakan->audio_url_dewasa) : '#' }}" 
+                           data-dewasa="{{ $gerakan->audio_url_dewasa ? asset($gerakan->audio_url_dewasa) : '#' }}" 
+                           data-anak="{{ $gerakan->audio_url_anak ? asset($gerakan->audio_url_anak) : '#' }}" 
+                           preload="none"></audio>
                     
-                    @if($gerakan->audio_url)
-                        <button id="audio-btn-{{ $loopIndex }}" class="audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99]" onclick="toggleAudio(this)">
+                    @if($gerakan->audio_url_dewasa || $gerakan->audio_url_anak)
+                        <button id="audio-btn-{{ $loopIndex }}" class="audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99] {{ !$gerakan->audio_url_dewasa ? 'hidden' : '' }}" onclick="toggleAudio(this)">
                             <span>▶ Putar Audio Bacaan</span>
                         </button>
                     @endif
@@ -113,7 +118,7 @@
                                     </div>
 
                                     <div class="italic text-emerald-700 text-sm mb-2 font-semibold tracking-wide">
-                                        "{{ $bacaan->teks_latin }}"
+                                        trim "{{ $bacaan->teks_latin }}"
                                     </div>
 
                                     <div class="text-gray-600 text-sm mb-2">
@@ -135,8 +140,6 @@
                             <button type="button" onclick="scrollToCard({{ $loopIndex - 1 }})" class="nav-prev flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition bg-gray-100 hover:bg-gray-200 px-4 py-2.5 rounded-xl active:scale-[0.98]">
                                 ← Sebelumnya
                             </button>
-                        @else
-                            <div></div>
                         @endif
 
                         @if(!$loop->last)
@@ -179,10 +182,27 @@
                     document.getElementById(`desc-dewasa-${idx}`).classList.add('hidden');
                     document.getElementById(`desc-anak-${idx}`).classList.remove('hidden');
 
-                    const audioBtn = document.getElementById(`audio-btn-${idx}`);
-                    if (audioBtn) audioBtn.className = audioBtn.className.replace(/emerald/g, 'amber');
-
                     card.querySelectorAll('.nav-next').forEach(b => b.className = b.className.replace(/emerald/g, 'amber'));
+
+                    // Logika Tukar Audio ke Mode Anak
+                    const audioEl = document.getElementById(`audio-element-${idx}`);
+                    const audioBtn = document.getElementById(`audio-btn-${idx}`);
+                    if (audioEl) {
+                        audioEl.pause();
+                        audioEl.currentTime = 0;
+                        const childSrc = audioEl.getAttribute('data-anak');
+                        audioEl.src = childSrc;
+
+                        if (audioBtn) {
+                            if (childSrc === '#' || !childSrc) {
+                                audioBtn.classList.add('hidden');
+                            } else {
+                                audioBtn.classList.remove('hidden');
+                                audioBtn.querySelector('span').innerText = "▶ Putar Audio Bacaan";
+                                audioBtn.className = "audio-btn w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99]";
+                            }
+                        }
+                    }
 
                     let subIndex = 0;
                     while (document.getElementById(`trans-dewasa-${idx}-${subIndex}`)) {
@@ -212,10 +232,27 @@
                     document.getElementById(`desc-dewasa-${idx}`).classList.remove('hidden');
                     document.getElementById(`desc-anak-${idx}`).classList.add('hidden');
 
-                    const audioBtn = document.getElementById(`audio-btn-${idx}`);
-                    if (audioBtn) audioBtn.className = audioBtn.className.replace(/amber/g, 'emerald');
-
                     card.querySelectorAll('.nav-next').forEach(b => b.className = b.className.replace(/amber/g, 'emerald'));
+
+                    // Logika Tukar Audio ke Mode Dewasa
+                    const audioEl = document.getElementById(`audio-element-${idx}`);
+                    const audioBtn = document.getElementById(`audio-btn-${idx}`);
+                    if (audioEl) {
+                        audioEl.pause();
+                        audioEl.currentTime = 0;
+                        const dewasaSrc = audioEl.getAttribute('data-dewasa');
+                        audioEl.src = dewasaSrc;
+
+                        if (audioBtn) {
+                            if (dewasaSrc === '#' || !dewasaSrc) {
+                                audioBtn.classList.add('hidden');
+                            } else {
+                                audioBtn.classList.remove('hidden');
+                                audioBtn.querySelector('span').innerText = "▶ Putar Audio Bacaan";
+                                audioBtn.className = "audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99]";
+                            }
+                        }
+                    }
 
                     let subIndex = 0;
                     while (document.getElementById(`trans-dewasa-${idx}-${subIndex}`)) {
