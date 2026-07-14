@@ -14,7 +14,7 @@ return [
         'urutan' => 2,
         'nama' => 'Takbiratul Ihram',
         'foto' => 'images/dewasa/takbir.png',
-        'audio_url' => 'audio/gerakan-2.mp3',
+        'audio_url' => 'audio/dewasa/takbir.mp3',
         'deskripsi' => 'Mengangkat kedua tangan sejajar telinga atau bahu dengan menghadapkan telapak tangan ke kiblat seraya mengucapkan kalimat takbir.',
         'bacaan' => [
             [
@@ -29,7 +29,7 @@ return [
         'urutan' => 3,
         'nama' => 'Bersedekap & Doa Iftitah',
         'foto' => 'images/dewasa/sedekap.png',
-        'audio_url' => 'audio/gerakan-3.mp3',
+        'audio_url' => 'audio/dewasa/iftitah.MP3',
         'deskripsi' => 'Meletakkan tangan kanan di atas pergelangan tangan kiri di atas dada, lalu dilanjutkan dengan membaca doa Iftitah.',
         'bacaan' => [
             [
@@ -44,7 +44,7 @@ return [
         'urutan' => 4,
         'nama' => 'Membaca Surah Al-Fātihah & Al-Qur\'an',
         'foto' => 'images/dewasa/sedekap.png',
-        'audio_url' => 'audio/gerakan-4.mp3',
+        'audio_url' => 'audio/dewasa/Al-Fatihah.mp3',
         'deskripsi' => 'Berdiri tegak membaca Surah Al-Fātihah secara lengkap (wajib), lalu diikuti dengan membaca beberapa ayat atau surah pendek dari Al-Qur\'an.',
         'bacaan' => [
             [
@@ -59,7 +59,7 @@ return [
         'urutan' => 5,
         'nama' => 'Rukuk',
         'foto' => 'images/dewasa/rukuk.png',
-        'audio_url' => 'audio/gerakan-5.mp3',
+        'audio_url' => 'audio/dewasa/ruku.MP3',
         'deskripsi' => 'Membungkukkan badan dengan posisi punggung dan kepala rata sejajar, kedua tangan memegang lutut dengan jari direnggangkan secara thuma\'ninah.',
         'bacaan' => [
             [
@@ -74,7 +74,7 @@ return [
         'urutan' => 6,
         'nama' => 'I\'tidal',
         'foto' => 'images/dewasa/takbir.png',
-        'audio_url' => 'audio/gerakan-6.mp3',
+        'audio_url' => 'audio/dewasa/Samiallaahu.MP3',
         'deskripsi' => 'Bangkit dari rukuk menuju posisi berdiri tegak kembali (thuma\'ninah) sembari mengangkat kedua tangan dan membaca doa i\'tidal.',
         'bacaan' => [
             [
@@ -89,7 +89,7 @@ return [
         'urutan' => 7,
         'nama' => 'Sujud Pertama',
         'foto' => 'images/dewasa/sujud.png',
-        'audio_url' => 'audio/gerakan-7.mp3',
+        'audio_url' => 'audio/dewasa/sujud.MP3',
         'deskripsi' => 'Meletakkan dahi, hidung, kedua telapak tangan, kedua lutut, dan ujung jari-jari kedua kaki menempel pada lantai secara thuma\'ninah.',
         'bacaan' => [
             [
@@ -104,7 +104,7 @@ return [
         'urutan' => 8,
         'nama' => 'Duduk di Antara Dua Sujud',
         'foto' => 'images/dewasa/tahyat awal.png',
-        'audio_url' => 'audio/gerakan-8.mp3',
+        'audio_url' => 'audio/dewasa/duduk diantara dua sujud.MP3',
         'deskripsi' => 'Bangkit dari sujud pertama lalu duduk tegak dengan posisi iftirasy (menduduki kaki kiri dan menegakkan telapak kaki kanan) disertai thuma\'ninah.',
         'bacaan' => [
             [
@@ -119,7 +119,7 @@ return [
         'urutan' => 9,
         'nama' => 'Sujud Kedua',
         'foto' => 'images/dewasa/sujud.png',
-        'audio_url' => 'audio/gerakan-9.mp3',
+        'audio_url' => 'audio/dewasa/sujud.MP3',
         'deskripsi' => 'Turun kembali untuk melakukan sujud kedua secara thuma\'ninah dengan cara dan doa yang sama seperti pada sujud pertama.',
         'bacaan' => [
             [
@@ -142,7 +142,7 @@ return [
         'urutan' => 11,
         'nama' => 'Duduk Tasyahud Awal',
         'foto' => 'images/dewasa/tahyat awal.png',
-        'audio_url' => 'audio/gerakan-11.mp3',
+        'audio_url' => 'audio/dewasa/tasyahud awal.MP3',
         'deskripsi' => 'Duduk secara iftirasy pada rakaat kedua (setelah sujud kedua) dengan meletakkan tangan di paha dan mengacungkan telunjuk jari kanan.',
         'bacaan' => [
             [
@@ -157,7 +157,7 @@ return [
         'urutan' => 12,
         'nama' => 'Duduk Tasyahud Akhir',
         'foto' => 'images/dewasa/tahyat akhir.png',
-        'audio_url' => 'audio/gerakan-12.mp3',
+        'audio_url' => 'audio/dewasa/tasyahud akhir.MP3',
         'deskripsi' => 'Duduk secara tawarruk pada rakaat terakhir, membaca tasyahud dilanjutkan shalawat nabi dan doa perlindungan.',
         'bacaan' => [
             [
@@ -172,7 +172,7 @@ return [
         'urutan' => 13,
         'nama' => 'Salam',
         'foto' => 'images/dewasa/salam.jpeg',
-        'audio_url' => 'audio/gerakan-13.mp3',
+        'audio_url' => 'audio/dewasa/salam.MP3',
         'deskripsi' => 'Menolehkan wajah ke arah kanan hingga pipi kanan terlihat dari belakang, kemudian menolehkan wajah ke arah kiri.',
         'bacaan' => [
             [
