@@ -99,10 +99,14 @@
                            preload="none"></audio>
                     
                     @if($gerakan->audio_url_dewasa || $gerakan->audio_url_anak)
-                        <button id="audio-btn-{{ $loopIndex }}" class="audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99] {{ !$gerakan->audio_url_dewasa ? 'hidden' : '' }}" onclick="toggleAudio(this)">
+                        <button id="audio-btn-{{ $loopIndex }}" class="audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-3 shadow-sm active:scale-[0.99] {{ !$gerakan->audio_url_dewasa ? 'hidden' : '' }}" onclick="toggleAudio(this)">
                             <span>▶ Putar Audio Bacaan</span>
                         </button>
                     @endif
+
+                    <button type="button" id="video-btn-{{ $loopIndex }}" class="video-btn w-full bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 mb-6 shadow-sm active:scale-[0.99] opacity-70 cursor-not-allowed" disabled>
+                        <span>🎬 Video Belum Tersedia</span>
+                    </button>
 
                     <div class="text-gray-600 text-sm leading-relaxed mb-6 bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-500">
                         <p id="desc-dewasa-{{ $loopIndex }}">{{ $gerakan->deskripsi_dewasa }}</p>
