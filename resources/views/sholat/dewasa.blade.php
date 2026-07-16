@@ -1,4 +1,9 @@
 @php
+    function getYoutubeId($url) {
+        if (!$url) return null;
+        preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches);
+        return $matches[1] ?? null;
+    }
     $dewasa = config('sholat_dewasa') ?? [];
     $daftarGerakan = collect($dewasa)->map(function($item, $index) {
         return (object)[
@@ -63,55 +68,60 @@
     </div>
 
     <div class="max-w-3xl mx-auto px-4 py-8">
+        @php
+            $videoGerakan = $daftarGerakan->first(function($gerakan) {
+                return !empty($gerakan->video_url);
+            });
+        @endphp
+
+        @if($videoGerakan)
+            <div class="mb-8 rounded-2xl bg-white border border-emerald-100 shadow-sm p-4 sm:p-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700">🎬</span>
+                    <h3 class="text-lg font-bold text-emerald-800">Video Gerakan Sholat</h3>
+                </div>
+
+                @php $ytId = getYoutubeId($videoGerakan->video_url); @endphp
+                @if($ytId)
+                    <div class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-inner">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube-nocookie.com/embed/{{ $ytId }}"
+                            title="{{ $videoGerakan->nama }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                @elseif($videoGerakan->video_url)
+                    <div class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-inner">
+                        <video class="w-full h-full object-contain" controls preload="none">
+                            <source src="{{ asset($videoGerakan->video_url) }}" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video ini.
+                        </video>
+                    </div>
+                @endif
+            </div>
+        @endif
 
         <div class="space-y-8">
             @foreach($daftarGerakan as $loopIndex => $gerakan)
                 <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 gerakan-card scroll-mt-24">
-                    
-                    <div class="flex items-center justify-between gap-4 mb-4">
-                        <div class="flex items-center gap-4">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
-                                {{ $gerakan->urutan }}
-                            </span>
-                            <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
-                        </div>
 
-                        <!-- Navigasi Beralih Foto / Video -->
-                        <div class="bg-gray-100 p-1 rounded-xl flex items-center gap-1">
-                            <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'photo')" class="btn-foto-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-emerald-700 shadow-sm transition">
-                                📷 Foto
-                            </button>
-                            <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'video')" class="btn-video-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold text-gray-500 hover:text-gray-900 transition">
-                                🎥 Video
-                            </button>
-                        </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
+                            {{ $gerakan->urutan }}
+                        </span>
+                        <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
                     </div>
 
-                    <!-- Container Media (Foto atau Video) -->
+                    <!-- Foto gerakan -->
                     <div class="w-full aspect-video bg-white rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner p-2">
-                        <!-- Elemen Foto -->
-                        <div id="photo-container-{{ $loopIndex }}" class="w-full h-full flex items-center justify-center">
-                            <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
-                        </div>
-
-                        <!-- Elemen Video -->
-                        <div id="video-container-{{ $loopIndex }}" class="w-full h-full hidden bg-gray-900 rounded-lg flex items-center justify-center relative">
-                            @if($gerakan->video_url)
-                                <video id="video-player-{{ $loopIndex }}" class="w-full h-full object-contain" controls preload="none">
-                                    <source src="{{ asset($gerakan->video_url) }}" type="video/quicktime">
-                                    <source src="{{ asset($gerakan->video_url) }}" type="video/mp4">
-                                    Browser kamu tidak mendukung pemutaran video ini.
-                                </video>
-                            @else
-                                <div class="text-center text-gray-400 text-sm">
-                                    🎥 Video tutorial belum tersedia
-                                </div>
-                            @endif
-                        </div>
+                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
-                    
+
                     @if($gerakan->audio_url)
                         <button class="audio-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-6" onclick="toggleAudio(this)">
                             <span>▶ Putar Audio Bacaan</span>
@@ -181,43 +191,6 @@
     </footer>
 
     <script>
-        // Fungsi beralih tampilan Foto / Video secara dinamis
-        function switchMedia(index, mediaType) {
-            const photoContainer = document.getElementById(`photo-container-${index}`);
-            const videoContainer = document.getElementById(`video-container-${index}`);
-            const videoPlayer = document.getElementById(`video-player-${index}`);
-            const btnFoto = document.querySelector(`.btn-foto-${index}`);
-            const btnVideo = document.querySelector(`.btn-video-${index}`);
-
-            if (mediaType === 'video') {
-                photoContainer.classList.add('hidden');
-                videoContainer.classList.remove('hidden');
-
-                // Update styling tombol dengan warna emerald
-                btnVideo.classList.add('bg-white', 'text-emerald-700', 'shadow-sm');
-                btnVideo.classList.remove('text-gray-500', 'hover:text-gray-900');
-                btnFoto.classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
-                btnFoto.classList.add('text-gray-500', 'hover:text-gray-900');
-
-                // Putar otomatis jika elemen video tersedia
-                if (videoPlayer) videoPlayer.play().catch(e => console.log('Autoplay ditangguhkan:', e));
-            } else {
-                photoContainer.classList.remove('hidden');
-                videoContainer.classList.add('hidden');
-
-                btnFoto.classList.add('bg-white', 'text-emerald-700', 'shadow-sm');
-                btnFoto.classList.remove('text-gray-500', 'hover:text-gray-900');
-                btnVideo.classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
-                btnVideo.classList.add('text-gray-500', 'hover:text-gray-900');
-
-                // Hentikan video jika elemen video tersedia
-                if (videoPlayer) {
-                    videoPlayer.pause();
-                    videoPlayer.currentTime = 0;
-                }
-            }
-        }
-
         function scrollToCard(index) {
             const targetCard = document.getElementById(`gerakan-${index}`);
             if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });

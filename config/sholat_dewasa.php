@@ -7,6 +7,7 @@ return [
         'nama' => 'Berdiri Tegak Menghadap Kiblat (Qiyam)',
         'foto' => 'images/dewasa/niat.png',
         'audio_url' => null,
+        'video_url' => 'https://www.youtube.com/watch?v=sR2kmbTqOS8&list=PLkV-F7NpiLe0UbOuju7VRshBBPJjSDrs5',
         'deskripsi' => 'Berdiri tegak menghadap kiblat dengan posisi badan lurus serta thuma\'ninah, disertai niat ikhlas karena Allah di dalam hati.',
         'bacaan' => []
     ],

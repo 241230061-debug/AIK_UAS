@@ -3,13 +3,9 @@
     $dewasa = config('sholat_dewasa') ?? [];
 
     $daftarGerakan = collect($anak)->map(function($item, $index) use ($dewasa) {
-        // Prioritas nama: pakai nama dari config anak dulu,
-        // baru fallback ke config dewasa kalau anak tidak punya 'nama'
         $nama = $item['nama'] ?? ($dewasa[$index]['nama'] ?? '');
         $fotoPath = $item['foto'] ?? '';
 
-        // Deteksi secara dinamis jika nama gerakan adalah Tasyahud Awal atau Akhir,
-        // kita arahkan path fotonya menggunakan gambar dududkuasujud yang valid (.jpeg)
         if (str_contains(strtolower($nama), 'tasyahud') || str_contains(strtolower($nama), 'tahiyat')) {
             $fotoPath = 'images/anak/dudukduasujud.jpeg';
         }
@@ -63,7 +59,6 @@
             <h1 class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2 tracking-wide">✨ Yuk, Belajar Sholat Bersama! ✨</h1>
             <p class="text-gray-600 text-lg">Panduan tata cara sholat HPT yang mudah dipahami anak pintar</p>
 
-            <!-- Progress dots -->
             <div class="flex items-center justify-center flex-wrap gap-1.5 mt-6">
                 @foreach($daftarGerakan as $loopIndex => $gerakan)
                     <button type="button" data-scroll-target="{{ $loopIndex }}" title="{{ $gerakan->nama }}"
@@ -76,49 +71,61 @@
     </div>
 
     <div class="max-w-3xl mx-auto px-4 py-8">
+        @php
+            $videoGerakan = $daftarGerakan->first(function($gerakan) {
+                return !empty($gerakan->video_url);
+            });
+        @endphp
+
+        @if($videoGerakan)
+            <div class="mb-8 rounded-3xl bg-white border border-amber-100 shadow-sm p-4 sm:p-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-600">🎬</span>
+                    <h3 class="text-lg font-bold text-amber-700">Video Gerakan Sholat</h3>
+                </div>
+
+                @if(str_contains($videoGerakan->video_url, 'youtube.com') || str_contains($videoGerakan->video_url, 'youtu.be'))
+                    @php
+                        parse_str(parse_url($videoGerakan->video_url, PHP_URL_QUERY), $url_vars);
+                        $youtube_id = $url_vars['v'] ?? '';
+                        if(empty($youtube_id)) {
+                            $path = explode('/', parse_url($videoGerakan->video_url, PHP_URL_PATH));
+                            $youtube_id = end($path);
+                        }
+                    @endphp
+                    <div class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-inner">
+                        <iframe class="w-full h-full object-cover"
+                                src="https://www.youtube.com/embed/{{ $youtube_id }}"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                @else
+                    <div class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-inner">
+                        <video class="w-full h-full object-contain" controls preload="none">
+                            <source src="{{ asset($videoGerakan->video_url) }}" type="video/mp4">
+                            Browser kamu tidak mendukung pemutaran video ini.
+                        </video>
+                    </div>
+                @endif
+            </div>
+        @endif
 
         <div class="space-y-8">
             @foreach($daftarGerakan as $loopIndex => $gerakan)
                 <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-3xl shadow-sm border border-amber-100 p-6 gerakan-card scroll-mt-24">
 
-                    <div class="flex items-center justify-between gap-4 mb-4">
-                        <div class="flex items-center gap-4">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-bold text-sm">
-                                {{ $gerakan->urutan }}
-                            </span>
-                            <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
-                        </div>
-                        
-                        <!-- Navigasi Beralih Foto / Video -->
-                        @if($gerakan->video_url)
-                            <div class="bg-gray-100 p-1 rounded-xl flex items-center gap-1">
-                                <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'photo')" class="btn-foto-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-amber-600 shadow-sm transition">
-                                    📷 Foto
-                                </button>
-                                <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'video')" class="btn-video-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold text-gray-500 hover:text-gray-900 transition">
-                                    🎥 Video
-                                </button>
-                            </div>
-                        @endif
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-bold text-sm">
+                            {{ $gerakan->urutan }}
+                        </span>
+                        <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
                     </div>
 
-                    <!-- Container Media (Foto atau Video) -->
                     <div class="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner">
-                        <!-- Elemen Foto -->
-                        <div id="photo-container-{{ $loopIndex }}" class="w-full h-full">
-                            <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
-                        </div>
-
-                        <!-- Elemen Video (Disembunyikan secara default) -->
-                        @if($gerakan->video_url)
-                            <div id="video-container-{{ $loopIndex }}" class="w-full h-full hidden">
-                                <video id="video-player-{{ $loopIndex }}" class="w-full h-full object-contain" controls preload="none">
-                                    <source src="{{ asset($gerakan->video_url) }}" type="video/quicktime">
-                                    <source src="{{ asset($gerakan->video_url) }}" type="video/mp4">
-                                    Browser kamu tidak mendukung pemutaran video ini.
-                                </video>
-                            </div>
-                        @endif
+                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
@@ -192,39 +199,6 @@
     </footer>
 
     <script>
-        function switchMedia(index, mediaType) {
-            const photoContainer = document.getElementById(`photo-container-${index}`);
-            const videoContainer = document.getElementById(`video-container-${index}`);
-            const videoPlayer = document.getElementById(`video-player-${index}`);
-            const btnFoto = document.querySelector(`.btn-foto-${index}`);
-            const btnVideo = document.querySelector(`.btn-video-${index}`);
-
-            if (mediaType === 'video') {
-                photoContainer.classList.add('hidden');
-                videoContainer.classList.remove('hidden');
-
-                btnVideo.classList.add('bg-white', 'text-amber-600', 'shadow-sm');
-                btnVideo.classList.remove('text-gray-500', 'hover:text-gray-900');
-                btnFoto.classList.remove('bg-white', 'text-amber-600', 'shadow-sm');
-                btnFoto.classList.add('text-gray-500', 'hover:text-gray-900');
-
-                if (videoPlayer) videoPlayer.play().catch(e => console.log('Autoplay video diblokir browser:', e));
-            } else {
-                photoContainer.classList.remove('hidden');
-                videoContainer.classList.add('hidden');
-
-                btnFoto.classList.add('bg-white', 'text-amber-600', 'shadow-sm');
-                btnFoto.classList.remove('text-gray-500', 'hover:text-gray-900');
-                btnVideo.classList.remove('bg-white', 'text-amber-600', 'shadow-sm');
-                btnVideo.classList.add('text-gray-500', 'hover:text-gray-900');
-
-                if (videoPlayer) {
-                    videoPlayer.pause();
-                    videoPlayer.currentTime = 0;
-                }
-            }
-        }
-
         function scrollToCard(index) {
             const targetCard = document.getElementById(`gerakan-${index}`);
             if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });

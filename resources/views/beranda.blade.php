@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM-IMO — Panduan Sholat Sesuai Tuntunan Sunnah</title>
-    <meta name="description" content="SIM-IMO: Panduan gerakan & bacaan sholat lengkap berdasarkan Himpunan Putusan Tarjih (HPT) Muhammadiyah, untuk dewasa maupun anak-anak.">
+    <title> Panduan Sholat Sesuai Tuntunan Sunnah</title>
+    <meta name="description" content="Panduan gerakan & bacaan sholat lengkap berdasarkan Himpunan Putusan Tarjih (HPT) Muhammadiyah, untuk dewasa maupun anak-anak.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -39,7 +39,7 @@
                 <span class="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Mudah &amp; Menyenangkan</span>
             </h1>
             <p class="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-                SIM-IMO menuntun setiap gerakan dan bacaan sholat secara lengkap — dilengkapi foto, video, dan audio —
+                Panduan Sholat menuntun setiap gerakan dan bacaan sholat secara lengkap — dilengkapi foto, video, dan audio —
                 sesuai tuntunan Sunnah, untuk seluruh anggota keluarga.
             </p>
 

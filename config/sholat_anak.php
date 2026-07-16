@@ -6,16 +6,16 @@ return [
         'urutan' => 1,
         'nama' => 'Niat dan Berdiri Tegak (Qiyam)',
         'foto' => 'images/anak/berdiri.jpeg',
-        'video_url' => 'videos/anak/Langkah1.mov',
+        'video_url' => 'https://www.youtube.com/watch?v=2v6xaa19TeI&pp=ygUdc2hvbGF0IG11aGFtbWFkaXlhaCBhbmFrIGFuYWs%3D',
         'audio_url' => null,
         'deskripsi' => 'Yuk, berdiri tegak dan rapi menghadap kiblat! Kita siapkan hati yang ikhlas untuk beribadah kepada Allah ya.',
         'bacaan' => []
     ],
+    // ... [kode sisanya dibiarkan sama seperti aslinya] ...
     [
         'urutan' => 2,
         'nama' => 'Takbiratul Ihram',
         'foto' => 'images/anak/takbiratul.jpeg',
-        'video_url' => 'videos/anak/Langkah 2.mp4', // Sudah diperbarui ke MP4 dengan spasi sesuai gambar
         'audio_url' => 'audio/anak/takbir(anak).MP3',
         'deskripsi' => 'Angkat kedua tanganmu setinggi telinga atau bahu, lalu ucapkan takbir dengan penuh semangat!',
         'bacaan' => [
@@ -27,11 +27,11 @@ return [
             ]
         ]
     ],
+    // ... (item-item gerakan selanjutnya biarkan persis seperti yang Anda miliki saat ini)
     [
         'urutan' => 3,
         'nama' => 'Sedekap (Doa Iftitah)',
         'foto' => 'images/anak/alfatihah.jpeg',
-        'video_url' => 'videos/anak/Langkah3.mov',
         'audio_url' => 'audio/anak/niat-sholat(anak).MP3',
         'deskripsi' => 'Letakkan tangan kananmu di atas tangan kiri tepat di dada, lalu baca doa pembuka ini dengan tenang.',
         'bacaan' => [
@@ -47,7 +47,6 @@ return [
         'urutan' => 4,
         'nama' => 'Membaca Surah Al-Fatihah',
         'foto' => 'images/anak/alfatihah.jpeg',
-        'video_url' => 'videos/anak/Langkah4.mov',
         'audio_url' => 'audio/anak/al-fatihah(anak).MP3',
         'deskripsi' => 'Tetap bersedekap ya, sekarang kita membaca Surah Al-Fatihah dan surah pendek Al-Qur\'an yang kamu hafal.',
         'bacaan' => [
@@ -63,7 +62,6 @@ return [
         'urutan' => 5,
         'nama' => 'Ruku\'',
         'foto' => 'images/anak/rukuk.jpeg',
-        'video_url' => 'videos/anak/Langkah5.mov',
         'audio_url' => 'audio/anak/ruku.MP3',
         'deskripsi' => 'Bungkukkan badanmu sampai lurus rata, pegang lututmu erat-erat, dan jangan bergerak-gerak dulu ya.',
         'bacaan' => [
@@ -79,7 +77,7 @@ return [
         'urutan' => 6,
         'nama' => 'I\'tidal',
         'foto' => 'images/anak/takbiratul.jpeg',
-        'video_url' => 'videos/anak/Langkah6.mov',
+        
         'audio_url' => 'audio/anak/itidal(anak).MP3',
         'deskripsi' => 'Bangkit berdiri tegak lagi, angkat tanganmu, lalu ucapkan pujian bersyukur kepada Allah.',
         'bacaan' => [
@@ -95,7 +93,7 @@ return [
         'urutan' => 7,
         'nama' => 'Sujud Pertama',
         'foto' => 'images/anak/sujud.jpeg',
-        'video_url' => 'videos/anak/Langkah7.mov',
+        
         'audio_url' => 'audio/anak/sujud(anak).MP3',
         'deskripsi' => 'Letakkan dahi, hidung, telapak tangan, dan lututmu di lantai dengan tertib. Rasakan betapa dekatnya kita dengan Allah saat sujud.',
         'bacaan' => [
@@ -111,7 +109,7 @@ return [
         'urutan' => 8,
         'nama' => 'Duduk di Antara Dua Sujud',
         'foto' => 'images/anak/dudukduasujud.jpeg',
-        'video_url' => 'videos/anak/Langkah8.mov',
+        
         'audio_url' => 'audio/anak/duduk-diantara(anak).MP3',
         'deskripsi' => 'Bangun dari sujud, duduklah dengan tegak dan tenang di atas kaki kirimu, lalu bacalah doa yang indah ini.',
         'bacaan' => [
@@ -127,7 +125,7 @@ return [
         'urutan' => 9,
         'nama' => 'Sujud Kedua',
         'foto' => 'images/anak/sujud.jpeg',
-        'video_url' => 'videos/anak/Langkah9.mov',
+        
         'audio_url' => 'audio/anak/sujud(anak).MP3',
         'deskripsi' => 'Yuk, sujud sekali lagi dengan rapi dan tenang seperti sujud yang pertama tadi!',
         'bacaan' => [
@@ -143,7 +141,7 @@ return [
         'urutan' => 10,
         'nama' => 'Berdiri untuk Rakaat Berikutnya',
         'foto' => 'images/anak/berdiri.jpeg',
-        'video_url' => 'videos/anak/Langkah10.mov',
+        
         'audio_url' => null,
         'deskripsi' => 'Eits, sholatnya belum selesai. Yuk bangun berdiri lagi dengan semangat untuk rakaat berikutnya!',
         'bacaan' => []
@@ -152,7 +150,7 @@ return [
         'urutan' => 11,
         'nama' => 'Tasyahud Awal',
         'foto' => 'images/anak/dudukduasujud.jpeg',
-        'video_url' => 'videos/anak/Langkah11.mov',
+        
         'audio_url' => 'audio/anak/tasyahudawalakhir(anak).MP3',
         'deskripsi' => 'Duduk yang rapi di rakaat kedua, letakkan tangan di paha, dan luruskan jari telunjuk kananmu ke depan ya.',
         'bacaan' => [
@@ -168,7 +166,7 @@ return [
         'urutan' => 12,
         'nama' => 'Tasyahud Akhir',
         'foto' => 'images/anak/dudukduasujud.jpeg',
-        'video_url' => 'videos/anak/Langkah12.mov',
+        
         'audio_url' => 'audio/anak/tasyahudawalakhir(anak).MP3',
         'deskripsi' => 'Sekrawat posisi duduk terakhir, geser sedikit kaki kirimu ke bawah kaki kanan, lalu kita membaca shalawat nabi.',
         'bacaan' => [
@@ -184,7 +182,7 @@ return [
         'urutan' => 13,
         'nama' => 'Salam',
         'foto' => 'images/anak/salam.jpeg',
-        'video_url' => 'videos/anak/Langkah13.mov',
+        
         'audio_url' => 'audio/anak/salam.MP3',
         'deskripsi' => 'Alhamdulillah! Menolehlah ke kanan lalu ke kiri untuk mendoakan keselamatan bagi orang-orang di sekitar kita.',
         'bacaan' => [

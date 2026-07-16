@@ -8,8 +8,8 @@
                 🕌
             </span>
             <span class="leading-tight">
-                <span class="block text-sm font-extrabold text-emerald-800 tracking-wide">SIM-IMO</span>
-                <span class="block text-[10px] text-emerald-500 font-semibold -mt-0.5">Sholat Sesuai HPT</span>
+                <span class="block text-sm font-extrabold text-emerald-800 tracking-wide">Panduan Sholat</span>
+                <span class="block text-[10px] text-emerald-500 font-semibold -mt-0.5">Nama Kelompok : Muhammad Nabil Junaidi, Dharma Ady Khara, Indoko Banderas</span>
             </span>
         </a>
 
