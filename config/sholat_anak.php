@@ -15,7 +15,7 @@ return [
         'urutan' => 2,
         'nama' => 'Takbiratul Ihram',
         'foto' => 'images/anak/takbiratul.jpeg',
-        'video_url' => 'videos/anak/Langkah2.mov',
+        'video_url' => 'videos/anak/Langkah 2.mp4', // Sudah diperbarui ke MP4 dengan spasi sesuai gambar
         'audio_url' => 'audio/anak/takbir(anak).MP3',
         'deskripsi' => 'Angkat kedua tanganmu setinggi telinga atau bahu, lalu ucapkan takbir dengan penuh semangat!',
         'bacaan' => [
