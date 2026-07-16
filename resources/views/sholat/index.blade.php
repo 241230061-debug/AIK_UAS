@@ -276,13 +276,6 @@
             }
         }
 
-        document.addEventListener('click', function(event) {
-            const button = event.target.closest('[data-scroll-target]');
-            if (!button) return;
-            const targetIndex = button.getAttribute('data-scroll-target');
-            scrollToCard(targetIndex);
-        });
-
         function toggleAudio(button) {
             const currentCard = button.closest('.gerakan-card');
             const currentAudio = currentCard.querySelector('.gerakan-audio');
