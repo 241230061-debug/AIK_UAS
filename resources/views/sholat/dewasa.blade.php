@@ -63,8 +63,8 @@
                         <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
                     </div>
 
-                    <div class="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner">
-                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-cover">
+                    <div class="w-full aspect-video bg-white rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner p-2">
+                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
