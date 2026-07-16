@@ -3,12 +3,13 @@
     $dewasa = config('sholat_dewasa') ?? [];
 
     $daftarGerakan = collect($anak)->map(function($item, $index) use ($dewasa) {
-        // Mengambil nama gerakan dari config dewasa berdasarkan index yang sama
-        $namaDewasa = $dewasa[$index]['nama'] ?? ($item['nama'] ?? '');
+        // Prioritas nama: pakai nama dari config anak dulu,
+        // baru fallback ke config dewasa kalau anak tidak punya 'nama'
+        $nama = $item['nama'] ?? ($dewasa[$index]['nama'] ?? '');
 
         return (object)[
             'urutan' => $item['urutan'] ?? ($index + 1),
-            'nama' => $namaDewasa, // Nama otomatis disamakan dengan mode dewasa
+            'nama' => $nama,
             'audio_url' => $item['audio_url'] ?? null,
             'foto' => $item['foto'] ?? '',
             'deskripsi' => $item['deskripsi'] ?? '',
@@ -40,7 +41,7 @@
 <body class="bg-amber-50/50 font-kids text-gray-800">
 
     <div class="max-w-3xl mx-auto px-4 py-8">
-        
+
         <div class="flex justify-center mb-8">
             <div class="bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm flex items-center gap-1">
                 <a href="/sholat/dewasa" class="px-4 py-2 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-900">
@@ -60,7 +61,7 @@
         <div class="space-y-8">
             @foreach($daftarGerakan as $loopIndex => $gerakan)
                 <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-3xl shadow-sm border border-amber-100 p-6 gerakan-card scroll-mt-6">
-                    
+
                     <div class="flex items-center gap-4 mb-4">
                         <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-bold text-sm">
                             {{ $gerakan->urutan }}
@@ -69,11 +70,11 @@
                     </div>
 
                     <div class="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner">
-                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-cover">
+                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
-                    
+
                     @if($gerakan->audio_url)
                         <button class="audio-btn w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-6 shadow-sm" onclick="toggleAudio(this)">
                             <span>▶ Putar Audio Bacaan</span>
