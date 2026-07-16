@@ -28,34 +28,45 @@
     <title>Tuntunan Sholat Dewasa - HPT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         .font-arabic { font-family: 'Amiri', serif; }
         .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .islamic-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(16,185,129,0.15) 1px, transparent 0);
+            background-size: 22px 22px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
-    <div class="max-w-3xl mx-auto px-4 py-8">
-        
-        <div class="flex justify-center mb-8">
-            <div class="bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm flex items-center gap-1">
-                <a href="/sholat/dewasa" class="px-4 py-2 rounded-xl text-sm font-bold bg-emerald-600 text-white shadow-sm">
-                    👨‍💼 Mode Dewasa
-                </a>
-                <a href="/sholat/anak" class="px-4 py-2 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-900">
-                    🧒 Mode Anak-Anak
-                </a>
-            </div>
-        </div>
+    @include('partials.navbar', ['active' => 'dewasa'])
 
-        <header class="text-center mb-12">
-            <h1 class="text-3xl font-bold text-emerald-700 mb-2">Tuntunan Sholat Sesuai HPT</h1>
-            <p class="text-gray-600">Panduan gerakan dan bacaan sholat lengkap berdasarkan Himpunan Putusan Tarjih</p>
+    <div class="relative border-b border-emerald-100 bg-gradient-to-b from-emerald-50 to-transparent overflow-hidden">
+        <div class="absolute inset-0 islamic-pattern opacity-70"></div>
+        <header class="relative max-w-3xl mx-auto px-4 pt-10 pb-8 text-center">
+            <span class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-700 text-[11px] font-bold px-3 py-1 rounded-full mb-3">
+                👨‍💼 Mode Dewasa
+            </span>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-emerald-800 mb-2">Tuntunan Sholat Sesuai HPT</h1>
+            <p class="text-gray-600 max-w-xl mx-auto">Panduan gerakan dan bacaan sholat lengkap berdasarkan Himpunan Putusan Tarjih Muhammadiyah</p>
+
+            <!-- Progress dots -->
+            <div class="flex items-center justify-center flex-wrap gap-1.5 mt-6">
+                @foreach($daftarGerakan as $loopIndex => $gerakan)
+                    <button type="button" data-scroll-target="{{ $loopIndex }}" title="{{ $gerakan->nama }}"
+                        class="nav-btn w-6 h-6 rounded-full bg-white border border-emerald-200 text-emerald-600 text-[10px] font-bold flex items-center justify-center hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition">
+                        {{ $loopIndex + 1 }}
+                    </button>
+                @endforeach
+            </div>
         </header>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
 
         <div class="space-y-8">
             @foreach($daftarGerakan as $loopIndex => $gerakan)
-                <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 gerakan-card scroll-mt-6">
+                <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 gerakan-card scroll-mt-24">
                     
                     <div class="flex items-center justify-between gap-4 mb-4">
                         <div class="flex items-center gap-4">
@@ -157,7 +168,17 @@
                 </div>
             @endforeach
         </div>
+
+        <div class="text-center mt-12">
+            <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 px-5 py-2.5 rounded-xl transition">
+                🏠 Kembali ke Beranda
+            </a>
+        </div>
     </div>
+
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 text-xs mt-12">
+        &copy; {{ date('Y') }} SIM-IMO Project. Terverifikasi sesuai Sunnah &amp; HPT.
+    </footer>
 
     <script>
         // Fungsi beralih tampilan Foto / Video secara dinamis

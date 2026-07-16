@@ -41,34 +41,45 @@
     <title>Yuk Belajar Sholat Anak - HPT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Fredoka:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Fredoka:wght@400;500;600;700&display=swap');
         .font-arabic { font-family: 'Amiri', serif; }
         .font-kids { font-family: 'Fredoka', sans-serif; }
+        .stars-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(245,158,11,0.25) 1.5px, transparent 0);
+            background-size: 26px 26px;
+        }
     </style>
 </head>
 <body class="bg-amber-50/50 font-kids text-gray-800">
 
-    <div class="max-w-3xl mx-auto px-4 py-8">
+    @include('partials.navbar', ['active' => 'anak'])
 
-        <div class="flex justify-center mb-8">
-            <div class="bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm flex items-center gap-1">
-                <a href="/sholat/dewasa" class="px-4 py-2 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-900">
-                    👨‍💼 Mode Dewasa
-                </a>
-                <a href="/sholat/anak" class="px-4 py-2 rounded-xl text-sm font-bold bg-amber-500 text-white shadow-sm">
-                    🧒 Mode Anak-Anak
-                </a>
-            </div>
-        </div>
-
-        <header class="text-center mb-12">
+    <div class="relative border-b border-amber-100 bg-gradient-to-b from-amber-100/60 to-transparent overflow-hidden">
+        <div class="absolute inset-0 stars-pattern opacity-70"></div>
+        <header class="relative max-w-3xl mx-auto px-4 pt-10 pb-8 text-center">
+            <span class="inline-flex items-center gap-1.5 bg-amber-400 text-white text-[11px] font-bold px-3 py-1 rounded-full mb-3 shadow-sm">
+                🧒 Mode Anak-Anak
+            </span>
             <h1 class="text-3xl lg:text-4xl font-bold text-amber-600 mb-2 tracking-wide">✨ Yuk, Belajar Sholat Bersama! ✨</h1>
             <p class="text-gray-600 text-lg">Panduan tata cara sholat HPT yang mudah dipahami anak pintar</p>
+
+            <!-- Progress dots -->
+            <div class="flex items-center justify-center flex-wrap gap-1.5 mt-6">
+                @foreach($daftarGerakan as $loopIndex => $gerakan)
+                    <button type="button" data-scroll-target="{{ $loopIndex }}" title="{{ $gerakan->nama }}"
+                        class="nav-btn w-7 h-7 rounded-full bg-white border-2 border-amber-200 text-amber-600 text-[11px] font-bold flex items-center justify-center hover:bg-amber-500 hover:text-white hover:border-amber-500 transition">
+                        {{ $loopIndex + 1 }}
+                    </button>
+                @endforeach
+            </div>
         </header>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
 
         <div class="space-y-8">
             @foreach($daftarGerakan as $loopIndex => $gerakan)
-                <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-3xl shadow-sm border border-amber-100 p-6 gerakan-card scroll-mt-6">
+                <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-3xl shadow-sm border border-amber-100 p-6 gerakan-card scroll-mt-24">
 
                     <div class="flex items-center justify-between gap-4 mb-4">
                         <div class="flex items-center gap-4">
@@ -168,7 +179,17 @@
                 </div>
             @endforeach
         </div>
+
+        <div class="text-center mt-12">
+            <a href="/" class="inline-flex items-center gap-1.5 text-sm font-bold text-amber-600 hover:text-amber-800 bg-amber-100 hover:bg-amber-200 px-5 py-2.5 rounded-xl transition">
+                🏠 Kembali ke Beranda
+            </a>
+        </div>
     </div>
+
+    <footer class="bg-amber-900 text-amber-200 text-center py-6 text-xs mt-12">
+        &copy; {{ date('Y') }} SIM-IMO Project. Terverifikasi sesuai Sunnah &amp; HPT. ✨
+    </footer>
 
     <script>
         function switchMedia(index, mediaType) {
