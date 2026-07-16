@@ -5,6 +5,7 @@
             'urutan' => $item['urutan'] ?? ($index + 1),
             'nama' => $item['nama'] ?? '',
             'audio_url' => $item['audio_url'] ?? null,
+            'video_url' => $item['video_url'] ?? null, // Dipersiapkan untuk data video nanti
             'foto' => $item['foto'] ?? '',
             'deskripsi' => $item['deskripsi'] ?? '',
             'bacaan' => collect($item['bacaan'] ?? [])->map(function($b) {
@@ -56,15 +57,46 @@
             @foreach($daftarGerakan as $loopIndex => $gerakan)
                 <div id="gerakan-{{ $loopIndex }}" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 gerakan-card scroll-mt-6">
                     
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
-                            {{ $gerakan->urutan }}
-                        </span>
-                        <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div class="flex items-center gap-4">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
+                                {{ $gerakan->urutan }}
+                            </span>
+                            <h2 class="text-xl font-bold text-gray-900">{{ $gerakan->nama }}</h2>
+                        </div>
+
+                        <!-- Navigasi Beralih Foto / Video -->
+                        <div class="bg-gray-100 p-1 rounded-xl flex items-center gap-1">
+                            <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'photo')" class="btn-foto-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-emerald-700 shadow-sm transition">
+                                📷 Foto
+                            </button>
+                            <button type="button" onclick="switchMedia('{{ $loopIndex }}', 'video')" class="btn-video-{{ $loopIndex }} px-3 py-1.5 rounded-lg text-xs font-bold text-gray-500 hover:text-gray-900 transition">
+                                🎥 Video
+                            </button>
+                        </div>
                     </div>
 
+                    <!-- Container Media (Foto atau Video) -->
                     <div class="w-full aspect-video bg-white rounded-xl overflow-hidden border border-gray-200 flex items-center justify-center mb-5 relative shadow-inner p-2">
-                        <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
+                        <!-- Elemen Foto -->
+                        <div id="photo-container-{{ $loopIndex }}" class="w-full h-full flex items-center justify-center">
+                            <img src="{{ asset($gerakan->foto) }}" alt="{{ $gerakan->nama }}" class="w-full h-full object-contain">
+                        </div>
+
+                        <!-- Elemen Video -->
+                        <div id="video-container-{{ $loopIndex }}" class="w-full h-full hidden bg-gray-900 rounded-lg flex items-center justify-center relative">
+                            @if($gerakan->video_url)
+                                <video id="video-player-{{ $loopIndex }}" class="w-full h-full object-contain" controls preload="none">
+                                    <source src="{{ asset($gerakan->video_url) }}" type="video/quicktime">
+                                    <source src="{{ asset($gerakan->video_url) }}" type="video/mp4">
+                                    Browser kamu tidak mendukung pemutaran video ini.
+                                </video>
+                            @else
+                                <div class="text-center text-gray-400 text-sm">
+                                    🎥 Video tutorial belum tersedia
+                                </div>
+                            @endif
+                        </div>
                     </div>
 
                     <audio class="gerakan-audio" src="{{ $gerakan->audio_url ? asset($gerakan->audio_url) : '#' }}" preload="none"></audio>
@@ -128,6 +160,43 @@
     </div>
 
     <script>
+        // Fungsi beralih tampilan Foto / Video secara dinamis
+        function switchMedia(index, mediaType) {
+            const photoContainer = document.getElementById(`photo-container-${index}`);
+            const videoContainer = document.getElementById(`video-container-${index}`);
+            const videoPlayer = document.getElementById(`video-player-${index}`);
+            const btnFoto = document.querySelector(`.btn-foto-${index}`);
+            const btnVideo = document.querySelector(`.btn-video-${index}`);
+
+            if (mediaType === 'video') {
+                photoContainer.classList.add('hidden');
+                videoContainer.classList.remove('hidden');
+
+                // Update styling tombol dengan warna emerald
+                btnVideo.classList.add('bg-white', 'text-emerald-700', 'shadow-sm');
+                btnVideo.classList.remove('text-gray-500', 'hover:text-gray-900');
+                btnFoto.classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
+                btnFoto.classList.add('text-gray-500', 'hover:text-gray-900');
+
+                // Putar otomatis jika elemen video tersedia
+                if (videoPlayer) videoPlayer.play().catch(e => console.log('Autoplay ditangguhkan:', e));
+            } else {
+                photoContainer.classList.remove('hidden');
+                videoContainer.classList.add('hidden');
+
+                btnFoto.classList.add('bg-white', 'text-emerald-700', 'shadow-sm');
+                btnFoto.classList.remove('text-gray-500', 'hover:text-gray-900');
+                btnVideo.classList.remove('bg-white', 'text-emerald-700', 'shadow-sm');
+                btnVideo.classList.add('text-gray-500', 'hover:text-gray-900');
+
+                // Hentikan video jika elemen video tersedia
+                if (videoPlayer) {
+                    videoPlayer.pause();
+                    videoPlayer.currentTime = 0;
+                }
+            }
+        }
+
         function scrollToCard(index) {
             const targetCard = document.getElementById(`gerakan-${index}`);
             if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });

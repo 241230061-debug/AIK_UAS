@@ -6,6 +6,7 @@ return [
         'urutan' => 1,
         'nama' => 'Niat dan Berdiri Tegak (Qiyam)',
         'foto' => 'images/anak/berdiri.jpeg',
+        'video_url' => 'videos/anak/Langkah1.mov',
         'audio_url' => null,
         'deskripsi' => 'Yuk, berdiri tegak dan rapi menghadap kiblat! Kita siapkan hati yang ikhlas untuk beribadah kepada Allah ya.',
         'bacaan' => []
@@ -14,9 +15,9 @@ return [
         'urutan' => 2,
         'nama' => 'Takbiratul Ihram',
         'foto' => 'images/anak/takbiratul.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Angkat kedua tanganmu setinggi telinga atau bahu, lalu ucapkan takbir dengan penuh semangat!',
+        'video_url' => 'videos/anak/Langkah2.mov',
         'audio_url' => 'audio/anak/takbir(anak).MP3',
+        'deskripsi' => 'Angkat kedua tanganmu setinggi telinga atau bahu, lalu ucapkan takbir dengan penuh semangat!',
         'bacaan' => [
             [
                 'teks_arab' => 'اللَّهُ أَكْبَرُ',
@@ -29,10 +30,10 @@ return [
     [
         'urutan' => 3,
         'nama' => 'Sedekap (Doa Iftitah)',
-        'foto' => 'images/anak/alfatihah.jpeg', // sementara pakai gambar yang sama dengan al-fatihah (pose sedekap sama)
-        'audio_url' => null,
-        'deskripsi' => 'Letakkan tangan kananmu di atas tangan kiri tepat di dada, lalu baca doa pembuka ini dengan tenang.',
+        'foto' => 'images/anak/alfatihah.jpeg',
+        'video_url' => 'videos/anak/Langkah3.mov',
         'audio_url' => 'audio/anak/niat-sholat(anak).MP3',
+        'deskripsi' => 'Letakkan tangan kananmu di atas tangan kiri tepat di dada, lalu baca doa pembuka ini dengan tenang.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -46,9 +47,9 @@ return [
         'urutan' => 4,
         'nama' => 'Membaca Surah Al-Fatihah',
         'foto' => 'images/anak/alfatihah.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Tetap bersedekap ya, sekarang kita membaca Surah Al-Fatihah dan surah pendek Al-Qur\'an yang kamu hafal.',
+        'video_url' => 'videos/anak/Langkah4.mov',
         'audio_url' => 'audio/anak/al-fatihah(anak).MP3',
+        'deskripsi' => 'Tetap bersedekap ya, sekarang kita membaca Surah Al-Fatihah dan surah pendek Al-Qur\'an yang kamu hafal.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -62,9 +63,9 @@ return [
         'urutan' => 5,
         'nama' => 'Ruku\'',
         'foto' => 'images/anak/rukuk.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Bungkukkan badanmu sampai lurus rata, pegang lututmu erat-erat, dan jangan bergerak-gerak dulu ya.',
+        'video_url' => 'videos/anak/Langkah5.mov',
         'audio_url' => 'audio/anak/ruku.MP3',
+        'deskripsi' => 'Bungkukkan badanmu sampai lurus rata, pegang lututmu erat-erat, dan jangan bergerak-gerak dulu ya.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -77,10 +78,10 @@ return [
     [
         'urutan' => 6,
         'nama' => 'I\'tidal',
-        'foto' => 'images/anak/takbiratul.jpeg', // sementara pakai gambar yang sama dengan takbiratul (posisi tangan mirip)
-        'audio_url' => null,
-        'deskripsi' => 'Bangkit berdiri tegak lagi, angkat tanganmu, lalu ucapkan pujian bersyukur kepada Allah.',
+        'foto' => 'images/anak/takbiratul.jpeg',
+        'video_url' => 'videos/anak/Langkah6.mov',
         'audio_url' => 'audio/anak/itidal(anak).MP3',
+        'deskripsi' => 'Bangkit berdiri tegak lagi, angkat tanganmu, lalu ucapkan pujian bersyukur kepada Allah.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -94,9 +95,9 @@ return [
         'urutan' => 7,
         'nama' => 'Sujud Pertama',
         'foto' => 'images/anak/sujud.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Letakkan dahi, hidung, telapak tangan, dan lututmu di lantai dengan tertib. Rasakan betapa dekatnya kita dengan Allah saat sujud.',
+        'video_url' => 'videos/anak/Langkah7.mov',
         'audio_url' => 'audio/anak/sujud(anak).MP3',
+        'deskripsi' => 'Letakkan dahi, hidung, telapak tangan, dan lututmu di lantai dengan tertib. Rasakan betapa dekatnya kita dengan Allah saat sujud.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -110,9 +111,9 @@ return [
         'urutan' => 8,
         'nama' => 'Duduk di Antara Dua Sujud',
         'foto' => 'images/anak/dudukduasujud.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Bangun dari sujud, duduklah dengan tegak dan tenang di atas kaki kirimu, lalu bacalah doa yang indah ini.',
+        'video_url' => 'videos/anak/Langkah8.mov',
         'audio_url' => 'audio/anak/duduk-diantara(anak).MP3',
+        'deskripsi' => 'Bangun dari sujud, duduklah dengan tegak dan tenang di atas kaki kirimu, lalu bacalah doa yang indah ini.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -125,10 +126,10 @@ return [
     [
         'urutan' => 9,
         'nama' => 'Sujud Kedua',
-        'foto' => 'images/anak/sujud.jpeg', // sementara pakai gambar sujud yang sama dengan gerakan 7
-        'audio_url' => null,
-        'deskripsi' => 'Yuk, sujud sekali lagi dengan rapi dan tenang seperti sujud yang pertama tadi!',
+        'foto' => 'images/anak/sujud.jpeg',
+        'video_url' => 'videos/anak/Langkah9.mov',
         'audio_url' => 'audio/anak/sujud(anak).MP3',
+        'deskripsi' => 'Yuk, sujud sekali lagi dengan rapi dan tenang seperti sujud yang pertama tadi!',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -141,7 +142,8 @@ return [
     [
         'urutan' => 10,
         'nama' => 'Berdiri untuk Rakaat Berikutnya',
-        'foto' => 'images/anak/berdiri.jpeg', // sementara pakai gambar berdiri yang sama dengan gerakan 1
+        'foto' => 'images/anak/berdiri.jpeg',
+        'video_url' => 'videos/anak/Langkah10.mov',
         'audio_url' => null,
         'deskripsi' => 'Eits, sholatnya belum selesai. Yuk bangun berdiri lagi dengan semangat untuk rakaat berikutnya!',
         'bacaan' => []
@@ -149,10 +151,10 @@ return [
     [
         'urutan' => 11,
         'nama' => 'Tasyahud Awal',
-        'foto' => 'images/anak/tasyahud1.jpeg', // TODO: file belum ada di public/images/anak
-        'audio_url' => null,
-        'deskripsi' => 'Duduk yang rapi di rakaat kedua, letakkan tangan di paha, dan luruskan jari telunjuk kananmu ke depan ya.',
+        'foto' => 'images/anak/dudukduasujud.jpeg',
+        'video_url' => 'videos/anak/Langkah11.mov',
         'audio_url' => 'audio/anak/tasyahudawalakhir(anak).MP3',
+        'deskripsi' => 'Duduk yang rapi di rakaat kedua, letakkan tangan di paha, dan luruskan jari telunjuk kananmu ke depan ya.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -165,10 +167,10 @@ return [
     [
         'urutan' => 12,
         'nama' => 'Tasyahud Akhir',
-        'foto' => 'images/anak/tasyahud2.jpeg', // TODO: file belum ada di public/images/anak
-        'audio_url' => null,
-        'deskripsi' => 'Sekarang posisi duduk terakhir, geser sedikit kaki kirimu ke bawah kaki kanan, lalu kita membaca shalawat nabi.',
+        'foto' => 'images/anak/dudukduasujud.jpeg',
+        'video_url' => 'videos/anak/Langkah12.mov',
         'audio_url' => 'audio/anak/tasyahudawalakhir(anak).MP3',
+        'deskripsi' => 'Sekrawat posisi duduk terakhir, geser sedikit kaki kirimu ke bawah kaki kanan, lalu kita membaca shalawat nabi.',
         'bacaan' => [
             [
                 'teks_arab' => '',
@@ -182,9 +184,9 @@ return [
         'urutan' => 13,
         'nama' => 'Salam',
         'foto' => 'images/anak/salam.jpeg',
-        'audio_url' => null,
-        'deskripsi' => 'Alhamdulillah! Menolehlah ke kanan lalu ke kiri untuk mendoakan keselamatan bagi orang-orang di sekitar kita.',
+        'video_url' => 'videos/anak/Langkah13.mov',
         'audio_url' => 'audio/anak/salam.MP3',
+        'deskripsi' => 'Alhamdulillah! Menolehlah ke kanan lalu ke kiri untuk mendoakan keselamatan bagi orang-orang di sekitar kita.',
         'bacaan' => [
             [
                 'teks_arab' => '',
