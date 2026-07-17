@@ -4,9 +4,8 @@
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100 shadow-sm">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
         <a href="/" class="flex items-center gap-2.5 shrink-0">
-            <span class="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-500 text-white text-lg shadow-md shadow-emerald-200">
-                🕌
-            </span>
+            <img src="{{ asset('images/images.png') }}" 
+            alt="Logo Universitas Muhammadiyah Pontianak" class="w-10 h-10 rounded-2xl object-contain shadow-md shadow-emerald-200">
             <span class="leading-tight">
                 <span class="block text-sm font-extrabold text-emerald-800 tracking-wide">Panduan Sholat</span>
                 <span class="block text-[10px] text-emerald-500 font-semibold -mt-0.5">Nama Kelompok : Muhammad Nabil Junaidi, Dharma Ady Khara, Indoko Banderas</span>
