@@ -94,8 +94,8 @@ return [
         'deskripsi' => 'Meletakkan dahi, hidung, kedua telapak tangan, kedua lutut, dan ujung jari-jari kedua kaki menempel pada lantai secara thuma\'ninah.',
         'bacaan' => [
             [
-                'teks_arab' => 'سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ اللَّهُمَّ اغْفِرْ لِي',
-                'teks_latin' => 'Subḥānakallāhumma...',
+                'teks_arab' => 'سُبْحَانَكَ اللهُمَّ رَبَّنَا وَبِحَمْدِكَ اللهُمَّ اغْفِرْلِيْ',
+                'teks_latin' => 'Subhaanakallah humma rabbanaa wa bihamdikallahummaghfirlii',
                 'terjemahan' => 'Maha Suci Engkau, ya Allah, Tuhan kami, dan dengan memuji-Mu, ya Allah, ampunilah aku.',
                 'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
             ]
@@ -124,8 +124,8 @@ return [
         'deskripsi' => 'Turun kembali untuk melakukan sujud kedua secara thuma\'ninah dengan cara dan doa yang sama seperti pada sujud pertama.',
         'bacaan' => [
             [
-                'teks_arab' => 'سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ اللَّهُمَّ اغْفِرْ لِي',
-                'teks_latin' => 'Subḥānakallāhumma...',
+                'teks_arab' => 'سُبْحَانَكَ اللهُمَّ رَبَّنَا وَبِحَمْدِكَ اللهُمَّ اغْفِرْلِيْ',
+                'teks_latin' => 'Subhaanakallah humma rabbanaa wa bihamdikallahummaghfirlii',
                 'terjemahan' => 'Maha Suci Engkau, ya Allah, Tuhan kami, dan dengan memuji-Mu, ya Allah, ampunilah aku.',
                 'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
             ]
@@ -147,8 +147,8 @@ return [
         'deskripsi' => 'Duduk secara iftirasy pada rakaat kedua (setelah sujud kedua) dengan meletakkan tangan di paha dan mengacungkan telunjuk jari kanan.',
         'bacaan' => [
             [
-                'teks_arab' => 'التَّحِيَّاتُ لِلَّهِ وَالصَّلَاوَاتُ وَالطَّيِّبَاتُ... ',
-                'teks_latin' => 'At-taḥiyyātu lillāhi...',
+                'teks_arab' => 'اَلتَّحِيَّاتُ لِلّهِ وَالصَّلَوَاتُ وَالطَّيِّباَتُ. اَلسَّلاَمُ عَلَيْكَ أَيُهاَ النَّبِيُّوَرَحْمَةُ اللهِ وَبَرَكاَتُهُ. اَلسَّلاَمُ عَلَيْناَ وَعَلَى عِدِاللهِ الصَّالِحِيْنَ أَشْهَدُ اَنْ لاَاِلَهَ اِلاَّ اللهِ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُوْلُهُ',
+                'teks_latin' => 'Attahiyyaatu lillaahi washsholawaatu waththoyyibaat. Assalaamu ‘alaika ayyuhannabiyyu warohmatullaahi wabarokaatuh. Assalaamu’alainaa wa’ala ‘ibaadillaahi shshoolihiin. Asyhadu anlaa ilaaha illallaah waasyhadu annamuhammadan ‘abduhu warosuuluh',
                 'terjemahan' => 'Segala kehormatan, kebahagiaan dan kebaikan adalah kepunyaan Allah. Semoga keselamatan, rahmat Allah dan berkah-Nya dilimpahkan kepadamu, wahai Nabi...',
                 'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
             ]
@@ -161,13 +161,19 @@ return [
         'audio_url' => 'audio/dewasa/tasyahud akhir.MP3',
         'deskripsi' => 'Duduk secara tawarruk pada rakaat terakhir, membaca tasyahud dilanjutkan shalawat nabi dan doa perlindungan.',
         'bacaan' => [
-            [
-                'teks_arab' => 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ ...',
-                'teks_latin' => 'Allāhumma ṣalli \'alā Muḥammadin...',
-                'terjemahan' => 'Ya Allah, limpahkanlah rahmat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau telah melimpahkan rahmat kepada Ibrahim...',
-                'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
-            ]
-        ]
+    [
+        'teks_arab' => 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ ، وَعَلَى آلِ مُحَمَّدٍ , كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ ، إِنَّكَ حَمِيدٌ مَجِيدٌ ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ ، وَعَلَى آلِ مُحَمَّدٍ ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ ، وَعَلَى آلِ إِبْرَاهِيمَ ، إِنَّكَ حَمِيدٌ مَجِيدٌ',
+        'teks_latin' => 'Allahumma sholli ‘ala Muhammad wa ‘ala aali Muhammad kamaa shollaita ‘ala Ibroohim wa ‘ala aali Ibrohim, innaka hamidun majiid. Allahumma baarik ‘ala Muhammad wa ‘ala aali Muhammad kamaa baarokta ‘ala Ibrohim wa ‘ala aali Ibrohimm innaka hamidun majiid',
+        'terjemahan' => 'Ya Allah, limpahkanlah rahmat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau telah melimpahkan rahmat kepada Ibrahim...',
+        'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
+    ],
+    [
+        'teks_arab' => 'اَللَّهُمَّ إِنِّيْ أَعُوْذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَمِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ شَرِّفِتْنَةِ الْمَسِيْحِ الدَّجَّالِ',
+        'teks_latin' => 'Allaahumma inni a’uudzubika min ‘adzaabil qabri wa min ‘adzaabinnaari jahannama wa min fitnatil mahyaa wal mamaati wa min fitnatil masiihid dajjaal.',
+        'terjemahan' => 'Ya Allah, sesungguhnya aku berlindung kepada-Mu dari siksa neraka Jahannam, dari siksa kubur, dari fitnah kehidupan dan kematian, serta dari keburukan fitnah Al-Masih Dajjal.',
+        'sumber' => 'HPT Muhammadiyah - HR. Bukhari & Muslim'
+    ],
+],
     ],
     [
         'urutan' => 13,
