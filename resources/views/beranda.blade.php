@@ -114,7 +114,7 @@
     <!-- FITUR APLIKASI -->
     <section class="max-w-5xl mx-auto px-4 py-16">
         <div class="text-center mb-10">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Fitur Panduan SIM-IMO</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Fitur Panduan Sholat</h2>
             <p class="text-gray-500 text-sm md:text-base">Dirancang agar mudah dipelajari, langkah demi langkah</p>
         </div>
 
@@ -175,8 +175,8 @@
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-gray-400 text-center py-8 text-xs">
-        <p class="mb-1">🕌 SIM-IMO — Sistem Informasi Muslim: Ilmu &amp; Tuntunan Sholat</p>
-        <p>&copy; {{ date('Y') }} SIM-IMO Project. Terverifikasi sesuai Sunnah &amp; HPT.</p>
+        <p class="mb-1">🕌 Universitas Muhammadiyah Pontianak — Sistem Informasi Muslim: Ilmu &amp; Tuntunan Sholat</p>
+        <p>&copy; {{ date('Y') }} Universitas Muhammadiyah Pontianak. All rights reserved.</p>
     </footer>
 
 </body>
